@@ -43,6 +43,6 @@ jobs:
           git checkout -b main
           git pull heroku-staging main
           git checkout develop
-          git merge main
+          git merge heroku-staging main
       - name: Pushing to Heroku
         run: git push heroku-staging develop:main
