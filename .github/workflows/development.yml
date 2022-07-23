@@ -39,6 +39,6 @@ jobs:
       - name: Renaming the Heroku remote
         run: git remote rename heroku heroku-staging
       - name: Pushing to Heroku
-        run: | 
-        git pull
-        git push heroku-staging develop:main
+        run: |
+          git pull
+          git push heroku-staging develop:main
