@@ -41,7 +41,8 @@ jobs:
       - name: Pulling the main branch
         run: git pull heroku-staging main
       - name: Merging the main to the develop
-      - run: git checkout develop
-      - run: git merge main
+        run: |
+          git checkout develop
+          git merge main
       - name: Pushing to Heroku
         run: git push heroku-staging develop:main
