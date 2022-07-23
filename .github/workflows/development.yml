@@ -9,24 +9,17 @@ jobs:
   heroku-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Checking out a repository
         uses: actions/checkout@v2
-      - name: Use Node.js 17.x
+      - name: Using Node.js 17.x
         uses: actions/setup-node@v1
         with:
           node-version: 17.x
-      - run: npm install
-      - run: npm run build --if-present
-
-  custom-deploy:
-    needs: heroku-deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Heroku login credentials
+      - name: Installing node modules
+        run: npm install
+      - name: Preparing the app build
+        run: npm run build --if-present
+      - name: Signing up to Heroku using credentials
         run: |
           cat > ~/.netrc <<EOF
             machine api.heroku.com
@@ -39,11 +32,11 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-      - name: Add Heroku remote
+      - name: Adding Heroku remote
         run: heroku git:remote --app $HEROKU_APP_NAME
         env:
           HEROKU_APP_NAME: ci-cd-react-test-app-staging
-      - name: Rename Heroku remote
+      - name: Renaming the Heroku remote
         run: git remote rename heroku heroku-staging
-      - name: Push to Heroku
+      - name: Pushing to Heroku
         run: git push heroku-staging develop:main
