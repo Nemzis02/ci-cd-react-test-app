@@ -38,9 +38,5 @@ jobs:
           HEROKU_APP_NAME: ci-cd-react-test-app-staging
       - name: Renaming the Heroku remote
         run: git remote rename heroku heroku-staging
-      - name: Merging the main to the develop
-        run: |
-          git fetch
-          git merge heroku-staging main
       - name: Pushing to Heroku
         run: git push heroku-staging develop:main
