@@ -15,8 +15,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 17.x
-      - name: echo test
-        run: echo ${GITHUB_REF##*/}
       - name: Installing node modules
         run: npm install
       - name: Preparing the app build
@@ -40,7 +38,11 @@ jobs:
           HEROKU_APP_NAME: ci-cd-react-test-app-staging
       - name: Renaming the Heroku remote
         run: git remote rename heroku heroku-staging
-      - name: Pulling the main branch
-        run: git fetch heroku-staging main:develop
+      - name: Merging the main to the develop
+        run: |
+          git checkout -b main
+          git pull heroku-staging main
+          git checkout develop
+          git merge main
       - name: Pushing to Heroku
         run: git push heroku-staging develop:main
