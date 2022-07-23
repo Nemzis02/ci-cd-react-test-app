@@ -25,6 +25,7 @@ jobs:
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       - name: Add Heroku remote
         run: heroku git:remote --app ci-cd-react-test-app-staging
+      - name: Rename Heroku remote
         run: git remote rename heroku heroku-staging
         env:
           HEROKU_APP_NAME: ci-cd-react-test-app-staging
