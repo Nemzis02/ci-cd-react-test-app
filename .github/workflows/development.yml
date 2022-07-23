@@ -43,5 +43,6 @@ jobs:
           git fetch
           echo $(git branch -a)
           git merge heroku-staging main
+          echo git branch -a
       - name: Pushing to Heroku
         run: git push heroku-staging develop:main
