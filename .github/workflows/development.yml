@@ -41,7 +41,7 @@ jobs:
       - name: Merging the main to the develop
         run: |
           git fetch
-          echo git branch -a
+          echo $(git branch -a)
           git merge heroku-staging main
           echo git branch -a
       - name: Pushing to Heroku
