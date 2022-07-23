@@ -39,10 +39,6 @@ jobs:
       - name: Renaming the Heroku remote
         run: git remote rename heroku heroku-staging
       - name: Pulling the main branch
-        run: git pull --rebase heroku-staging main
-      - name: Merging the main to the develop
-        run: |
-          git checkout develop
-          git merge main
+        run: git fetch heroku-staging main:develop
       - name: Pushing to Heroku
         run: git push heroku-staging develop:main
