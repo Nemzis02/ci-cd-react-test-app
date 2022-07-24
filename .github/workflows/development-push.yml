@@ -1,0 +1,43 @@
+name: Deploy to the develop
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  heroku-deploy-develop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out a repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Using Node.js 17.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 17.x
+      - name: Installing node modules
+        run: npm install
+      - name: Running unit tests
+        run: npm test
+      - name: Preparing the app build
+        run: npm run build --if-present
+      - name: Signing up to Heroku using credentials
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+          EOF
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      - name: Deploying the develop branch to the Heroku main branch
+        run: |
+          heroku git:remote -a ci-cd-react-develop
+          git remote rename heroku develop
+          git push develop develop:main
