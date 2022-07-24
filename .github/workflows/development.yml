@@ -33,13 +33,6 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       - name: Adding Heroku remote
-        run: heroku git:remote --app $HEROKU_APP_NAME
-        env:
-          HEROKU_APP_NAME: ci-cd-react-test-app-staging
-      - name: Renaming the Heroku remote
-        run: git remote rename heroku heroku-staging
+        run: heroku git remote add develop https://git.heroku.com/arcane-badlands-76754.git
       - name: Pushing to Heroku
-        run: |
-          git fetch heroku-staging/main
-          git merge main
-          git push heroku-staging develop:main
+        run: git push develop develop:main
