@@ -36,6 +36,7 @@ jobs:
         run: |
           heroku git:remote -a ci-cd-react-develop
           git remote rename heroku develop
+          git config --global pull.ff only
           git checkout -b main
           git pull develop main --rebase
           git checkout develop
