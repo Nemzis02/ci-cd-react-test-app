@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Yerin Alexander learn react
+          Pipe learn react
         </a>
       </header>
     </div>

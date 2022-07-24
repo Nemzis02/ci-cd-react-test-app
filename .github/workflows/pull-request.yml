@@ -1,4 +1,4 @@
-name: run checks
+name: Run checks
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  heroku-deploy:
+  run-checks:
     runs-on: ubuntu-latest
     steps:
       - name: Checking out a repository
