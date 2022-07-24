@@ -36,6 +36,6 @@ jobs:
         run: |
           heroku git:remote -a ci-cd-react-develop
           git remote rename heroku develop
-          git fetch main
+          git fetch develop/main
           get merge main
           git push develop develop:main
