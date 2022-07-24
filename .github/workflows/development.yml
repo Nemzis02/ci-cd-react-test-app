@@ -40,5 +40,5 @@ jobs:
           git checkout -b main
           git pull develop main
           git checkout develop
-          git merge main
+          git rebase main
           git push develop develop:main
