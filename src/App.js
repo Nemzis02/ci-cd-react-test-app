@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Yerin learn react
+          Yerin Alexander learn react
         </a>
       </header>
     </div>
