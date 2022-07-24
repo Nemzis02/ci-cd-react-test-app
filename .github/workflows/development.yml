@@ -36,7 +36,4 @@ jobs:
         run: |
           heroku git:remote -a ci-cd-react-develop
           git remote rename heroku develop
-          git fetch develop
-          git config --global rebase.autoStash true
-          git rebase --onto develop --root develop/main
           git push develop develop:main
