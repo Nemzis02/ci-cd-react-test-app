@@ -1,4 +1,4 @@
-name: deploy
+name: run checks
 
 on:
   pull_request:
