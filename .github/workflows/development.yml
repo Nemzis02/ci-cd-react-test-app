@@ -20,7 +20,7 @@ jobs:
       - name: Installing node modules
         run: npm install
       - name: Running unit tests
-      run: npm install
+        run: npm test
       - name: Preparing the app build
         run: npm run build --if-present
       - name: Signing up to Heroku using credentials
