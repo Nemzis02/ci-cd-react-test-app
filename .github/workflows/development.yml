@@ -38,7 +38,7 @@ jobs:
           git remote rename heroku develop
           git config --global pull.ff only
           git checkout -b main
-          git pull develop main
+          git pull develop main --rebase
           git checkout develop
           git rebase main
           git push develop develop:main
