@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  heroku-deploy:
+  heroku-deploy-develop:
     runs-on: ubuntu-latest
     steps:
       - name: Checking out a repository
