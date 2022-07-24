@@ -37,7 +37,7 @@ jobs:
           heroku git:remote -a ci-cd-react-develop
           git remote rename heroku develop
           git checkout -b main
-          git pull develop main
+          git pull develop main --rebase
           git checkout develop
           git rebase main
           git push develop develop:main
