@@ -38,4 +38,3 @@ jobs:
           git remote rename heroku develop
           git fetch main
           get merge main
-          git push develop develop:main
