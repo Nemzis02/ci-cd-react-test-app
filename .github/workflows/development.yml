@@ -37,4 +37,5 @@ jobs:
           heroku git:remote -a ci-cd-react-develop
           git remote rename heroku develop
           git fetch --all --unshallow
+          git filter-branch -- --all
           git push develop develop:main
