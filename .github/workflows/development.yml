@@ -32,7 +32,9 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
-      - name: Adding Heroku remote
-        run: heroku git remote add develop https://git.heroku.com/arcane-badlands-76754.git
-      - name: Pushing to Heroku
-        run: git push develop develop:main
+      - name: Deploying to the Heroku develop branch
+        run: |
+          heroku git:remote -a ci-cd-react-develop
+          git remote rename heroku develop
+          git fetch main
+          get merge main
