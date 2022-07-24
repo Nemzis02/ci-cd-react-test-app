@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Pipe learn react
+          Pipe learn 1react
         </a>
       </header>
     </div>
